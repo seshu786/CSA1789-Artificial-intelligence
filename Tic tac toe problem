@@ -1,0 +1,40 @@
+board = [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
+player = 1
+
+def printBoard():
+    print( "   |   |   ")
+    print( " " + board[1] + " | " + board[2] + " | " + board[3] + " ")
+    print( "   |   |   ")
+    print("---|---|---")
+    print( "   |   |   ")
+    print( " " + board[4] + " | " + board[5] + " | " + board[6] + " ")
+    print( "   |   |   ")
+    print("---|---|---")
+    print( "   |   |   ")
+    print( " " + board[7] + " | " + board[8] + " | " + board[9] + " ")
+    print( "   |   |   ")
+
+while True:
+    printBoard()
+    if player == 1:
+        print("Player 1's chance")
+        choice = int(input("Enter the position where you want to mark : "))
+        if board[choice] == ' ':
+            board[choice] = 'X'
+            player = 2
+        else:
+            print("That place is already filled.\nTry again...")
+            continue
+    else:
+        print("Player 2's chance")
+        choice = int(input("Enter the position where you want to mark : "))
+        if board[choice] == ' ':
+            board[choice] = 'O'
+            player = 1
+        else:
+            print("That place is already filled.\nTry again...")
+            continue
+    for i in (1,3,7,9):
+        if board[i] == board[i+1] == board[i+2] and board[i] != ' ':
+            print("Player ",player," wins")
+            exit()
